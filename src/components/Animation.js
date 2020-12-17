@@ -1,6 +1,8 @@
 import { useRef, useState } from 'react'
-import { Canvas, useFrame } from 'react-three-fiber'
-import { OrbitControls } from 'drei'
+import React, { Suspense } from 'react'
+import { Canvas, useLoader, useFrame } from 'react-three-fiber'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { OrbitControls, StandardEffects, draco } from 'drei'
 
 function Box(props) {
     const mesh = useRef()

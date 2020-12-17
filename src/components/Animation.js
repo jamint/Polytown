@@ -2,7 +2,13 @@ import { useRef, useState } from 'react'
 import React, { Suspense } from 'react'
 import { Canvas, useLoader, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { OrbitControls, StandardEffects, draco } from 'drei'
+import { OrbitControls, StandardEffects } from 'drei'
+
+
+function TheModel() {
+    const gltf = useLoader(GLTFLoader, '/schnitzel-01.glb')
+    return <primitive object={gltf.scene} position={[0, 0, 0]} />
+}
 
 function Box(props) {
     const mesh = useRef()
@@ -33,6 +39,9 @@ function Animation() {
             <pointLight position={[10, 10, 10]} />
             <Box position={[-1.2, 0, 0]} />
             <Box position={[1.2, 0, 0]} />
+            <Suspense fallback={null}>
+                <TheModel />
+            </Suspense>
             <OrbitControls />
         </Canvas>
     );

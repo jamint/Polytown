@@ -1,6 +1,8 @@
+import Animation from '../components/Animation'
+
 function Home() {
     return (
-        <div>Home</div>
+        <Animation />
     );
 }
 

@@ -1,7 +1,6 @@
 import './App.scss';
 import Header from './components/Header'
 import Main from './components/Main'
-// import Animation from './components/Animation'
 import {
   RecoilRoot,
   atom,
@@ -19,7 +18,6 @@ function App() {
       <RecoilRoot>
         <div className="App">
           <Main />
-          {/* <Animation /> */}
           <Header />
         </div>
       </RecoilRoot>

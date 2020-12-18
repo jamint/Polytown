@@ -9,7 +9,7 @@ function Header() {
     return (
         <header>
             <h1>
-                Polytown
+                <Link to="/">Polytown</Link>
             </h1>
             <ul>
                 <li><Link to="/shop">Shop</Link></li>

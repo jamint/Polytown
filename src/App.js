@@ -1,6 +1,7 @@
 import './App.scss';
 import Header from './components/Header'
-import Animation from './components/Animation'
+import Main from './components/Main'
+// import Animation from './components/Animation'
 import {
   RecoilRoot,
   atom,
@@ -8,15 +9,21 @@ import {
   useRecoilState,
   useRecoilValue,
 } from 'recoil';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
 
 function App() {
   return (
-    <RecoilRoot>
-      <div className="App">
-        <Animation />
-        <Header />
-      </div>
-    </RecoilRoot>
+    <Router>
+      <RecoilRoot>
+        <div className="App">
+          <Main />
+          {/* <Animation /> */}
+          <Header />
+        </div>
+      </RecoilRoot>
+    </Router>
   );
 }
 

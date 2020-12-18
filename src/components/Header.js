@@ -1,3 +1,10 @@
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+
 function Header() {
     return (
         <header>
@@ -5,8 +12,8 @@ function Header() {
                 Polytown
             </h1>
             <ul>
-                <li>Shop</li>
-                <li>About</li>
+                <li><Link to="/shop">Shop</Link></li>
+                <li><Link to="/about">About</Link></li>
             </ul>
         </header>
     );

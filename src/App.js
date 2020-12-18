@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Header from './components/Header'
 import Animation from './components/Animation'
 import {
@@ -13,8 +13,8 @@ function App() {
   return (
     <RecoilRoot>
       <div className="App">
-        <Header />
         <Animation />
+        <Header />
       </div>
     </RecoilRoot>
   );

@@ -14,6 +14,8 @@ function Schnitzel() {
         platform02,
         arch01
 
+    console.log("ok......")
+
     gl.shadowMap.enabled = true
     gl.shadowMap.type = PCFSoftShadowMap
     gl.shadowMapSoft = true
@@ -50,6 +52,7 @@ export const get3DObject = (arr, query) => {
 }
 
 function Animation() {
+    console.log("start it up...")
     return (
         <div className="three-anim">
             <Canvas colorManagement shadowMap camera={{ fov: 30, position: [0, 5, 12] }}>
@@ -78,9 +81,9 @@ function Animation() {
                     intensity={1.5}
                     position={[1, 5, 1]}
                     castShadow
+                    shadowBias={-0.0004}
                     shadow-mapSize-height={1024}
                     shadow-mapSize-width={1024}
-                    shadowBias={-0.0004}
                 />
                 <Suspense fallback={null}>
                     <Schnitzel />

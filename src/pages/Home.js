@@ -2,7 +2,9 @@ import Animation from '../components/Animation'
 
 function Home() {
     return (
-        <Animation />
+        <>
+            <Animation />
+        </>
     );
 }
 

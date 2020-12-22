@@ -77,7 +77,6 @@ function Animation2() {
     return (
         <div>
             <div className="three-anim"></div>
-            BEER
         </div>
     )
 }

@@ -4,11 +4,11 @@ function Header() {
     return (
         <header>
             <h1>
-                <Link to="/">Polytown</Link>
+                <Link to="/">R3F</Link>
             </h1>
             <ul>
-                <li><Link to="/shop">Shop</Link></li>
-                <li><Link to="/about">About</Link></li>
+                <li><Link to="/shop">About</Link></li>
+                <li><Link to="/about">Contact</Link></li>
             </ul>
         </header>
     );

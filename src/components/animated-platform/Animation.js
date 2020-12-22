@@ -4,10 +4,13 @@ import { Canvas, useLoader, useThree, useRender } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
 import AnimatedPlatformLights from '../lights/AnimatedPlatformLights'
-import gsap from 'gsap'
+import { gsap, TimelineMax } from 'gsap'
+import { modelState } from "../../state";
+import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
 
-function Schnitzel() {
-    const gltf = useLoader(GLTFLoader, '/models/animation-03.glb')
+
+function TheAnimation() {
+    let gltf = useLoader(GLTFLoader, '/models/animation-03.glb')
     const children = gltf.scene.children
     const { camera, gl } = useThree()
     let mainEmpty,
@@ -16,7 +19,14 @@ function Schnitzel() {
         platform02,
         arch01
 
+    const [theModel, setTheModel] = useRecoilState(modelState);
+
     useEffect(() => {
+        console.log(theModel)
+    }, [theModel])
+
+    useEffect(() => {
+        setTheModel("pooper")
 
         gl.shadowMap.enabled = true
         gl.shadowMap.type = PCFSoftShadowMap
@@ -38,15 +48,19 @@ function Schnitzel() {
         })
         gsap.from(camera.position, { duration: 5, y: 1 })
 
-        // platform.visible = false
+        platform.visible = false
 
         gsap.from(mainEmpty.scale, { duration: 3.5, x: 0, y: 0, z: 0, ease: 'elastic.out(1, 1)' })
         gsap.from(mainEmpty.rotation, { duration: 3.5, y: Math.PI, ease: 'elastic.out(1, 1)' })
 
         gsap.from(platform02.scale, { duration: 2, y: 0, ease: 'elastic.out(1, 1)', delay: 1 })
-        gsap.from(platform.scale, { duration: 2, y: 0, ease: 'elastic.out(1, 1)', delay: 1 })
+        // gsap.from(platform.scale, { duration: 2, y: 0, ease: 'elastic.out(1, 1)', delay: 1 })
         gsap.from(arch01.scale, { duration: 2, z: 0, y: 0, ease: 'elastic.out(1, 1)', delay: 1.2 })
-        console.log("waka ")
+
+        setTimeout(() => {
+            gsap.from(platform.position, { duration: 2, y: -5 })
+            platform.visible = true
+        }, 3000);
     }, [])
 
     return <primitive object={gltf.scene} receiveShadow position={[0, 0, 0]} />
@@ -60,15 +74,17 @@ export const get3DObject = (arr, query) => {
 }
 
 function Animation() {
-    console.log("start it up...")
     return (
         <div className="three-anim">
-            <Canvas colorManagement shadowMap camera={{ fov: 30, position: [0, 5, 12] }}>
-                <AnimatedPlatformLights />
-                <Suspense fallback={null}>
-                    <Schnitzel />
-                </Suspense>
-                <OrbitControls enableZoom={false} />
+            {/* <Canvas colorManagement shadowMap camera={{ fov: 30, position: [0, 5, 12] }}> */}
+            <Canvas colorManagement camera={{ fov: 30, position: [0, 5, 12] }}>
+                <RecoilRoot>
+                    <AnimatedPlatformLights />
+                    <Suspense fallback={null}>
+                        <TheAnimation />
+                    </Suspense>
+                    <OrbitControls enableZoom={false} />
+                </RecoilRoot>
             </Canvas>
         </div >
     );

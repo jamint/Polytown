@@ -1,47 +1,55 @@
-import React, { Suspense, useEffect } from 'react'
-import { PCFSoftShadowMap, sRGBEncoding } from 'three'
-import { Canvas, useLoader, useThree, useRender } from 'react-three-fiber'
+import React, { Suspense, useEffect, useState } from 'react'
+import { Canvas, useLoader, useThree } from 'react-three-fiber'
+// import { PCFSoftShadowMap, sRGBEncoding } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
+import { sceneNum, setSceneNum } from "../../state";
+import { RecoilRoot, useRecoilState } from "recoil";
 import AnimatedPlatformLights from '../lights/AnimatedPlatformLights'
-import { modelState } from "../../state";
-import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
-import { initialSequence } from './AnimSequence'
-
+import { setSceneObjects, playScene, initializeScene } from './AnimSequence'
 
 function TheAnimation() {
     let gltf = useLoader(GLTFLoader, '/models/animation-03.glb')
-    const children = gltf.scene.children
     const { camera, gl } = useThree()
-    let sceneObjects = {}
-    // const [theModel, setTheModel] = useRecoilState(modelState);
-    // useEffect(() => {
-    //     console.log(theModel)
-    // }, [theModel])
+    const [scene, setScene] = useRecoilState(sceneNum);
+    const [firstTime, setFirstTime] = useState(true)
 
     useEffect(() => {
-        // setTheModel()
+        if (!firstTime) {
+            playScene(scene)
+        }
+        setFirstTime(false)
+    }, [scene])
 
+    useEffect(() => {
         gl.shadowMap.enabled = true
-        gl.shadowMap.type = PCFSoftShadowMap
-        gl.shadowMapSoft = true
-        gl.outputEncoding = sRGBEncoding
+        // gl.shadowMap.type = PCFSoftShadowMap
+        // gl.shadowMapSoft = true
+        // gl.outputEncoding = sRGBEncoding
 
-        sceneObjects.camera = camera
+        let obj = {}
+        obj.camera = camera
+
         gltf.scene.traverse(child => {
             if (child.isMesh) {
                 child.castShadow = true
                 child.receiveShadow = true
             }
             if (child.name === "MainEmpty") {
-                sceneObjects.mainEmpty = child
-                sceneObjects.platform = get3DObject(child.children, 'Platform')
-                sceneObjects.platform02 = get3DObject(child.children, 'Platform02')
-                sceneObjects.arch01 = get3DObject(child.children, 'Arch01')
+                obj.mainEmpty = child
+                obj.platform = get3DObject(child.children, 'Platform')
+                obj.platform02 = get3DObject(child.children, 'Platform02')
+                obj.arch01 = get3DObject(child.children, 'Arch01')
+                obj.world = get3DObject(obj.platform.children, 'World')
+                obj.scene2Empty = get3DObject(obj.platform.children, 'Scene2Empty')
+                obj.thing = get3DObject(obj.scene2Empty.children, 'Thing')
             }
-
         })
-        initialSequence(sceneObjects)
+        setSceneObjects(obj)
+        initializeScene()
+        setTimeout(() => {
+            setScene(0)
+        }, 2000);
     }, [])
 
     return <primitive object={gltf.scene} receiveShadow position={[0, 0, 0]} />

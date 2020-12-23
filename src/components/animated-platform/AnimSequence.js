@@ -39,7 +39,7 @@ export const initializeScene = () => {
     o.scene1Empty.visible = false
     o.scene2Empty.visible = false
     o.platform.visible = false
-    gsap.from(o.camera.position, { duration: 5, y: 1 })
+    gsap.fromTo(o.camera.position, { y: 0 }, { duration: 5, x: 1, y: 5 })
     gsap.from(o.mainEmpty.scale, { duration: 3.5, x: 0, y: 0, z: 0, ease: 'elastic.out(1, 1)' })
     gsap.from(o.mainEmpty.rotation, { duration: 3.5, y: Math.PI, ease: 'elastic.out(1, 1)' })
     gsap.from(o.platform02.scale, { duration: 2, y: 0, ease: 'elastic.out(1, 1)', delay: 1 })

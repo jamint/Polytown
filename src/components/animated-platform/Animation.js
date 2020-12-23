@@ -76,7 +76,7 @@ export const get3DObject = (arr, query) => {
 function Animation() {
     return (
         <div className="three-anim">
-            <Canvas colorManagement shadowMap camera={{ fov: 30, position: [0, 5, 12] }}>
+            <Canvas colorManagement shadowMap camera={{ fov: 30, position: [0, 0, 12] }}>
                 {/* <Canvas colorManagement camera={{ fov: 30, position: [0, 5, 12] }}> */}
                 <RecoilRoot>
                     <AnimatedPlatformLights />

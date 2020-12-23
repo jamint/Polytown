@@ -6,7 +6,7 @@ import { OrbitControls } from 'drei'
 import { sceneNum, setSceneNum } from "../../state";
 import { RecoilRoot, useRecoilState } from "recoil";
 import AnimatedPlatformLights from '../lights/AnimatedPlatformLights'
-import { setSceneObjects, playScene, initializeScene } from './AnimSequence'
+import { setSceneObjects, playScene, initializeScene } from './AnimationController'
 
 function TheAnimation() {
     let gltf = useLoader(GLTFLoader, '/models/animation-03.glb')

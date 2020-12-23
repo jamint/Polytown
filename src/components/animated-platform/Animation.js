@@ -31,10 +31,12 @@ function TheAnimation() {
         obj.camera = camera
 
         gltf.scene.traverse(child => {
-            if (child.isMesh) {
+            if (child.name !== "FloorCover") {
                 child.castShadow = true
                 child.receiveShadow = true
             }
+            if (child.name === "Floor") obj.floor = child
+            if (child.name === "FloorCover") obj.floorCover = child
             if (child.name === "MainEmpty") {
                 obj.mainEmpty = child
                 obj.platform = get3DObject(child.children, 'Platform')
@@ -45,6 +47,7 @@ function TheAnimation() {
                 obj.scene2Empty = get3DObject(obj.platform.children, 'Scene2Empty')
                 obj.thing = get3DObject(obj.scene1Empty.children, 'Thing')
             }
+            console.log(child)
         })
         setSceneObjects(obj)
         initializeScene()

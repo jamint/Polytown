@@ -4,11 +4,15 @@ import { playScene1, removeScene1 } from './animations/scene1'
 import { playScene2, removeScene2 } from './animations/scene2'
 
 let o = {}
+let scene = null
 let currNum = null
 let prevNum = null
 
 export const setSceneObjects = (obj) => {
     o = obj
+}
+export const setScene = (s) => {
+    scene = s
 }
 
 export const initializeScene = () => {

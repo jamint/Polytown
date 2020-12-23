@@ -6,20 +6,20 @@ import { OrbitControls } from 'drei'
 import { sceneNum, setSceneNum } from "../../state";
 import { RecoilRoot, useRecoilState } from "recoil";
 import AnimatedPlatformLights from '../lights/AnimatedPlatformLights'
-import { setSceneObjects, playScene, initializeScene } from './AnimationController'
+import { setSceneObjects, playScene, initializeScene, setScene } from './AnimationController'
 
 function TheAnimation() {
     let gltf = useLoader(GLTFLoader, '/models/animation-03.glb')
-    const { camera, gl } = useThree()
-    const [scene, setScene] = useRecoilState(sceneNum);
+    const { camera, gl, scene } = useThree()
+    const [currScene, setCurrScene] = useRecoilState(sceneNum);
     const [firstTime, setFirstTime] = useState(true)
 
     useEffect(() => {
         if (!firstTime) {
-            playScene(scene)
+            playScene(currScene)
         }
         setFirstTime(false)
-    }, [scene])
+    }, [currScene])
 
     useEffect(() => {
         gl.shadowMap.enabled = true
@@ -43,27 +43,29 @@ function TheAnimation() {
                 obj.platform02 = get3DObject(child.children, 'Platform02')
                 obj.arch01 = get3DObject(child.children, 'Arch01')
                 obj.scene0Empty = get3DObject(obj.platform.children, 'Scene0Empty')
+                console.log(obj.scene0Empty.children)
+                obj.circle = get3DObject(obj.scene0Empty.children, 'Circle')
                 obj.scene1Empty = get3DObject(obj.platform.children, 'Scene1Empty')
                 obj.scene2Empty = get3DObject(obj.platform.children, 'Scene2Empty')
-                obj.thing = get3DObject(obj.scene1Empty.children, 'Thing')
+                obj.scene2Empty = get3DObject(obj.platform.children, 'Scene2Empty')
             }
-            console.log(child)
         })
         setSceneObjects(obj)
+        setScene(scene)
         initializeScene()
-        setScene(0)
+        setCurrScene(0)
         setTimeout(() => {
-            setScene(1)
-        }, 5000)
+            setCurrScene(1)
+        }, 7000)
         setTimeout(() => {
-            setScene(2)
-        }, 10000)
+            setCurrScene(2)
+        }, 12000)
         setTimeout(() => {
-            setScene(0)
-        }, 15000)
+            setCurrScene(0)
+        }, 17000)
         setTimeout(() => {
-            setScene(1)
-        }, 20000)
+            setCurrScene(1)
+        }, 25000)
     }, [])
 
     return <primitive object={gltf.scene} receiveShadow position={[0, 0, 0]} />
@@ -80,7 +82,6 @@ function Animation() {
     return (
         <div className="three-anim">
             <Canvas colorManagement shadowMap camera={{ fov: 30, position: [0, 0, 12] }}>
-                {/* <Canvas colorManagement camera={{ fov: 30, position: [0, 5, 12] }}> */}
                 <RecoilRoot>
                     <AnimatedPlatformLights />
                     <Suspense fallback={null}>

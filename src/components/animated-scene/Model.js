@@ -7,8 +7,9 @@ import { gsap } from 'gsap'
 import AnimationController from './AnimationController'
 
 function Model(props) {
-    let gltf = useLoader(GLTFLoader, '/models/animation-03.glb')
     const { camera, gl } = useThree()
+    let gltf = useLoader(GLTFLoader, '/models/animation-03.glb')
+    let obj = {}
 
     useEffect(() => {
         gl.shadowMap.enabled = true
@@ -16,7 +17,6 @@ function Model(props) {
         gl.shadowMapSoft = true
         gl.outputEncoding = sRGBEncoding
 
-        let obj = {}
         obj.camera = camera
 
         gltf.scene.traverse(child => {
@@ -56,7 +56,7 @@ function Model(props) {
     return (
         <>
             <primitive object={gltf.scene} receiveShadow position={[0, 0, 0]} />
-            <AnimationController state={props.state} model={gltf} />
+            <AnimationController currAnim={props.currAnim} prevAnim={props.prevAnim} obj={obj} />
         </>
     )
 }

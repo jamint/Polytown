@@ -5,28 +5,24 @@ import AnimationUI from '../components/animated-scene/AnimationUI'
 export const AnimStateContext = React.createContext();
 
 function Home() {
-    const [currCount, setCurrCount] = useState(0)
-    const prevCountRef = useRef()
+    const [currAnim, setCurrAnim] = useState(0)
 
+    const prevAnimRef = useRef()
+    const prevAnim = prevAnimRef.current;
     useEffect(() => {
-        prevCountRef.current = currCount;
-    });
-    const prevCount = prevCountRef.current;
-
-    console.log(currCount)
-    console.log(prevCount)
-    console.log("==========")
+        prevAnimRef.current = currAnim;
+    }, [currAnim]);
 
     function changeNum(direction) {
-        const dir = (direction === "left") ? currCount - 1 : currCount + 1
-        setCurrCount(dir)
+        const dir = (direction === "left") ? currAnim - 1 : currAnim + 1
+        setCurrAnim(dir)
     }
 
     return (
-        <AnimStateContext.Provider value={currCount}>
+        <AnimStateContext.Provider value={{ currAnim, prevAnim }} >
             <AnimatedScene />
             <AnimationUI handleAnimChange={(direction) => changeNum(direction)} />
-        </AnimStateContext.Provider>
+        </ AnimStateContext.Provider>
     );
 }
 

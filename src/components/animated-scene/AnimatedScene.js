@@ -6,14 +6,14 @@ import { AnimStateContext } from '../../pages/Home'
 import Model from './Model'
 
 function AnimatedScene() {
-    const value = useContext(AnimStateContext);
+    const value = useContext(AnimStateContext)
 
     return (
         <div className="three-anim">
             <Canvas colorManagement shadowMap camera={{ fov: 30, position: [0, 0, 12] }}>
                 <AnimatedPlatformLights />
                 <Suspense fallback={null}>
-                    <Model state={value} />
+                    <Model currAnim={value.currAnim} prevAnim={value.prevAnim} />
                 </Suspense>
                 <OrbitControls enableZoom={false} />
             </Canvas>

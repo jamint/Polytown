@@ -21,9 +21,8 @@ export const playScene0 = (obj) => {
         const x = Math.random() * 2 - 1;
         const y = Math.random() * 2 - 1;
         const z = Math.random() * 2 - 1;
-        gsap.to(circ.position, { duration: 1, x, y: y + 1.5, z, delay: 3 + i * 0.001, ease: 'elastic.out(1, 1)' })
+        gsap.to(circ.position, { duration: 1, x, y: y + 1.5, z, delay: 2.5 + i * 0.001, ease: 'elastic.out(1, 1)' })
     }
-    // o.circle.visible = false
 }
 const animate = () => {
     myReq = requestAnimationFrame(animate);

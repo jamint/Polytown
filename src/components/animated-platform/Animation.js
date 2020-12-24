@@ -30,6 +30,7 @@ function TheAnimation() {
         let obj = {}
         obj.camera = camera
 
+        console.log(gltf.scene)
         gltf.scene.traverse(child => {
             if (child.name !== "FloorCover") {
                 child.castShadow = true

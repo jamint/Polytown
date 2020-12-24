@@ -25,3 +25,18 @@ header {
     margin: 5px 20px;
   }
 }
+
+.buttons {
+  position: absolute;
+  top: 50%;
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  .left {
+    margin-left: 20px;
+  }
+  .right {
+    margin-right: 20px;
+  }
+}

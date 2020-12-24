@@ -1,4 +1,4 @@
-import Animation from '../components/animated-platform/Animation'
+import Animation from '../components/animated-scene/Animation'
 
 function Home() {
     return (

@@ -23,7 +23,6 @@ export default function Animation0(props) {
     return null
 }
 function playAnimation() {
-    // console.log(obj)
     setTimeout(() => {
         obj.platform.visible = true
         gsap.set(obj.scene0Empty, { visible: true })
@@ -31,11 +30,8 @@ function playAnimation() {
         gsap.fromTo(obj.platform.position, { y: -2 }, { duration: 2, y: 1.2, ease: 'elastic.out(1, 1)' })
         myReq = requestAnimationFrame(animate);
     }, 2000);
-    console.log(obj)
     setTimeout(() => {
-        console.log(obj)
         for (let i = 0; i < numCircles; i++) {
-            // console.log(obj.circle)
             const circ = obj.circle.clone()
             circ.name = "s" + i
             obj.scene0Empty.add(circ)

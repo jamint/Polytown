@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import AnimatedScene from '../components/animated-scene/AnimatedScene'
 import AnimationUI from '../components/animated-scene/AnimationUI'
+import { numAnimations } from '../components/animated-scene/AnimationController'
 
 export const AnimStateContext = React.createContext();
 
@@ -9,13 +10,22 @@ function Home() {
 
     const prevAnimRef = useRef()
     const prevAnim = prevAnimRef.current;
+
     useEffect(() => {
+        console.log(currAnim)
         prevAnimRef.current = currAnim;
     }, [currAnim]);
 
     function changeNum(direction) {
-        const dir = (direction === "left") ? currAnim - 1 : currAnim + 1
-        setCurrAnim(dir)
+        let anim = (direction === "left") ? currAnim - 1 : currAnim + 1
+
+        if (anim >= numAnimations) {
+            anim = 0
+        }
+        if (anim < 0) {
+            anim = numAnimations - 1
+        }
+        setCurrAnim(anim)
     }
 
     return (

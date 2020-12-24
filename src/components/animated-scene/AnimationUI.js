@@ -1,5 +1,3 @@
-import React, { useContext } from 'react'
-
 export default function AnimationUI(props) {
 
     return (

@@ -3,6 +3,7 @@ import { useLoader, useThree } from 'react-three-fiber'
 import { PCFSoftShadowMap, sRGBEncoding } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { gsap } from 'gsap'
+import { get3DObject } from '../../utils/get3DObject'
 
 import AnimationController from './AnimationController'
 
@@ -32,7 +33,6 @@ function Model(props) {
                 obj.platform02 = get3DObject(child.children, 'Platform02')
                 obj.arch01 = get3DObject(child.children, 'Arch01')
                 obj.scene0Empty = get3DObject(obj.platform.children, 'Scene0Empty')
-                // console.log(obj.scene0Empty.children)
                 obj.circle = get3DObject(obj.scene0Empty.children, 'Circle')
                 obj.scene1Empty = get3DObject(obj.platform.children, 'Scene1Empty')
                 obj.scene2Empty = get3DObject(obj.platform.children, 'Scene2Empty')
@@ -61,11 +61,11 @@ function Model(props) {
     )
 }
 
-const get3DObject = (arr, query) => {
-    var result = arr.filter(obj => {
-        return obj.name === query;
-    });
-    return result[0];
-}
+// const get3DObject = (arr, query) => {
+//     var result = arr.filter(obj => {
+//         return obj.name === query;
+//     });
+//     return result[0];
+// }
 
 export default Model

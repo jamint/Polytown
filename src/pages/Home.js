@@ -12,7 +12,6 @@ function Home() {
     const prevAnim = prevAnimRef.current;
 
     useEffect(() => {
-        console.log(currAnim)
         prevAnimRef.current = currAnim;
     }, [currAnim]);
 

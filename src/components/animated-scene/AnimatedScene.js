@@ -11,7 +11,7 @@ function AnimatedScene() {
 
     return (
         <div className="three-anim">
-            <Canvas colorManagement camera={{ fov: 30, position: [0, 0, 12] }}>
+            <Canvas colorManagement shadowMap camera={{ fov: 30, position: [0, 0, 12] }}>
                 <AnimatedPlatformLights />
                 <Suspense fallback={null}>
                     <Model currAnim={value.currAnim} prevAnim={value.prevAnim} />

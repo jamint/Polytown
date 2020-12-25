@@ -33,6 +33,18 @@ header {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  button {
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    font-size: 2rem;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: inherit;
+    color: #fff;
+    padding: 10px 20px;
+    user-select: none;
+    transform: translateY(-50%);
+  }
   .left {
     margin-left: 20px;
   }

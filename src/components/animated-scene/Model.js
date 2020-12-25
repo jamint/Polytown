@@ -61,11 +61,4 @@ function Model(props) {
     )
 }
 
-// const get3DObject = (arr, query) => {
-//     var result = arr.filter(obj => {
-//         return obj.name === query;
-//     });
-//     return result[0];
-// }
-
 export default Model

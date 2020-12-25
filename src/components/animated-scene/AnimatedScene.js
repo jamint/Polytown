@@ -15,6 +15,8 @@ function AnimatedScene() {
                 <AnimatedPlatformLights />
                 <Suspense fallback={null}>
                     <Model currAnim={value.currAnim} prevAnim={value.prevAnim} />
+                </Suspense>
+                <Suspense fallback={null}>
                     <Model2 currAnim={value.currAnim} prevAnim={value.prevAnim} />
                 </Suspense>
                 <OrbitControls enableZoom={false} />

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useLoader, useThree } from 'react-three-fiber'
-import { PCFSoftShadowMap, sRGBEncoding } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { gsap } from 'gsap'
 import { get3DObject } from '../../utils/get3DObject'
@@ -13,11 +12,6 @@ function Model(props) {
     let obj = {}
 
     useEffect(() => {
-        gl.shadowMap.enabled = true
-        gl.shadowMap.type = PCFSoftShadowMap
-        gl.shadowMapSoft = true
-        gl.outputEncoding = sRGBEncoding
-
         obj.camera = camera
 
         gltf.scene.traverse(child => {

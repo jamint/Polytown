@@ -15,31 +15,29 @@ function Model(props) {
 
     useEffect(() => {
         mixer = new THREE.AnimationMixer(scene);
-        console.log(animations)
-        void mixer.clipAction(animations[0]).play();
-        void mixer.clipAction(animations[1]).play();
+        void mixer.clipAction(animations[0]).play()
+        void mixer.clipAction(animations[1]).play()
 
         obj.camera = camera
+        obj.floor = scene.getObjectByName("Floor", true)
+        obj.platform = scene.getObjectByName('Platform', true)
+        obj.floorCover = scene.getObjectByName('FloorCover', true)
+        obj.mainEmpty = scene.getObjectByName('MainEmpty', true)
+        obj.platform02 = scene.getObjectByName('Platform02', true)
+        obj.arch01 = scene.getObjectByName('Arch01', true)
+        obj.circle = scene.getObjectByName('Circle', true)
+        obj.scene0Empty = scene.getObjectByName('Scene0Empty', true)
+        obj.scene1Empty = scene.getObjectByName('Scene1Empty', true)
+        obj.scene2Empty = scene.getObjectByName('Scene2Empty', true)
+        obj.octopusArm = obj.scene2Empty.getObjectByName('OctopusArm')
 
         scene.traverse(child => {
             if (child.name !== "FloorCover") {
                 child.castShadow = true
                 child.receiveShadow = true
             }
-            if (child.name === "Floor") obj.floor = child
-            if (child.name === "FloorCover") obj.floorCover = child
-            if (child.name === "MainEmpty") {
-                obj.mainEmpty = child
-                obj.platform = get3DObject(child.children, 'Platform')
-                obj.platform02 = get3DObject(child.children, 'Platform02')
-                obj.arch01 = get3DObject(child.children, 'Arch01')
-                obj.scene0Empty = get3DObject(obj.platform.children, 'Scene0Empty')
-                obj.circle = get3DObject(obj.scene0Empty.children, 'Circle')
-                obj.scene1Empty = get3DObject(obj.platform.children, 'Scene1Empty')
-                obj.scene2Empty = get3DObject(obj.platform.children, 'Scene2Empty')
-                obj.scene2Empty = get3DObject(obj.platform.children, 'Scene2Empty')
-            }
         })
+
         // Set initial values
         obj.floorCover.visible = false
         obj.scene0Empty.visible = false

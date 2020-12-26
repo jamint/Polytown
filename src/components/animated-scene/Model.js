@@ -3,7 +3,6 @@ import { useLoader, useThree, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { gsap } from 'gsap'
 import * as THREE from 'three'
-import { get3DObject } from '../../utils/get3DObject'
 import AnimationController from './AnimationController'
 
 let mixer = null
@@ -15,8 +14,10 @@ function Model(props) {
 
     useEffect(() => {
         mixer = new THREE.AnimationMixer(scene);
-        void mixer.clipAction(animations[0]).play()
-        void mixer.clipAction(animations[1]).play()
+        let animationsArr = []
+        animationsArr.push(THREE.AnimationClip.findByName(animations, "bender"))
+        animationsArr.push(THREE.AnimationClip.findByName(animations, "Key.001Action"))
+        animationsArr.map(clip => mixer.clipAction(clip).play())
 
         obj.camera = camera
         obj.floor = scene.getObjectByName("Floor", true)

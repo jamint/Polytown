@@ -1,20 +1,27 @@
 import React, { useEffect } from 'react'
-import { useLoader, useThree } from 'react-three-fiber'
+import { useLoader, useThree, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { gsap } from 'gsap'
+import * as THREE from 'three'
 import { get3DObject } from '../../utils/get3DObject'
-
 import AnimationController from './AnimationController'
 
+let mixer = null
+
 function Model(props) {
-    const { camera, gl } = useThree()
-    let gltf = useLoader(GLTFLoader, '/models/animation-03.glb')
+    const { camera } = useThree()
+    let { scene, animations } = useLoader(GLTFLoader, '/models/animation-04.glb')
     let obj = {}
 
     useEffect(() => {
+        mixer = new THREE.AnimationMixer(scene);
+        console.log(animations)
+        void mixer.clipAction(animations[0]).play();
+        void mixer.clipAction(animations[1]).play();
+
         obj.camera = camera
 
-        gltf.scene.traverse(child => {
+        scene.traverse(child => {
             if (child.name !== "FloorCover") {
                 child.castShadow = true
                 child.receiveShadow = true
@@ -47,9 +54,13 @@ function Model(props) {
         gsap.from(obj.arch01.scale, { duration: 2, z: 0, y: 0, ease: 'elastic.out(1, 1)', delay: 1.2 })
     }, [])
 
+    useFrame((state, delta) => {
+        mixer.update(delta);
+    });
+
     return (
         <>
-            <primitive object={gltf.scene} receiveShadow position={[0, 0, 0]} />
+            <primitive object={scene} receiveShadow position={[0, 0, 0]} />
             <AnimationController currAnim={props.currAnim} prevAnim={props.prevAnim} obj={obj} />
         </>
     )

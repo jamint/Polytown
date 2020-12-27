@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
-import AnimatedScene from '../components/animated-scene/AnimatedScene'
-import AnimationUI from '../components/animated-scene/AnimationUI'
+import TestScene from '../components/test-scene/TestScene'
+// import AnimatedScene from '../components/animated-scene/AnimatedScene'
+// import AnimationUI from '../components/animated-scene/AnimationUI'
 import { numAnimations } from '../components/animated-scene/AnimationController'
 
 export const AnimStateContext = React.createContext();
@@ -30,8 +31,9 @@ function Home() {
 
     return (
         <AnimStateContext.Provider value={{ currAnim, prevAnim }} >
-            <AnimatedScene />
-            <AnimationUI handleAnimChange={(direction) => changeNum(direction)} />
+            <TestScene />
+            {/* <AnimatedScene />
+            <AnimationUI handleAnimChange={(direction) => changeNum(direction)} /> */}
         </ AnimStateContext.Provider>
     );
 }

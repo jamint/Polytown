@@ -5,7 +5,6 @@ import AnimatedPlatformLights from '../lights/AnimatedPlatformLights'
 import { AnimStateContext } from '../../pages/Home'
 import Model from './Model'
 import Model2 from './Model2'
-// import Loading from '../Loading'
 
 function AnimatedScene() {
     const value = useContext(AnimStateContext)
@@ -16,11 +15,9 @@ function AnimatedScene() {
                 <AnimatedPlatformLights />
                 <Suspense fallback={null}>
                     <Model currAnim={value.currAnim} prevAnim={value.prevAnim} />
-                    {/* <Model2 currAnim={value.currAnim} prevAnim={value.prevAnim} /> */}
                 </Suspense>
                 <OrbitControls enableZoom={false} />
             </Canvas>
-            {/* <Loading /> */}
         </div >
     );
 }

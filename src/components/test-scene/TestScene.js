@@ -5,12 +5,13 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
 import * as THREE from 'three'
 import Environment from './Environment'
-import LightTest1 from '../lights/AnimatedPlatformLights'
+// import Lights from '../lights/AnimatedPlatformLights'
+import Lights from '../lights/LightTest1'
 import Effects from './Effects'
 
 const Model = () => {
     const { camera } = useThree()
-    let { scene } = useLoader(GLTFLoader, '/models/test.glb')
+    let { scene } = useLoader(GLTFLoader, '/models/garsone-01.glb')
     scene.traverse((s => {
         if (s.isMesh) {
             s.castShadow = true
@@ -25,7 +26,7 @@ export default function TestScene() {
     return (
         <div className="three-anim">
             <Canvas
-                colorManagement
+                // colorManagement
                 shadowMap
                 concurrent
                 // noEvents={active}
@@ -34,10 +35,11 @@ export default function TestScene() {
                     position: [1, 4, 12],
                 }}
                 onCreated={({ gl, scene }) => {
-                    gl.toneMapping = THREE.ACESFilmicToneMapping
-                    gl.outputEncoding = THREE.sRGBEncoding
+                    // gl.toneMapping = THREE.ACESFilmicToneMapping
+                    // gl.outputEncoding = THREE.sRGBEncoding
+                    // gl.encoding = THREE.sRGBEncoding
                 }} >
-                <LightTest1 />
+                <Lights />
                 <Suspense fallback={null}>
                     <Environment />
                     <Model />

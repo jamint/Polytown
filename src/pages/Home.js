@@ -6,7 +6,7 @@ import { numAnimations } from '../components/animated-scene/AnimationController'
 export const AnimStateContext = React.createContext();
 
 function Home() {
-    const [currAnim, setCurrAnim] = useState(0)
+    const [currAnim, setCurrAnim] = useState(3)
 
     const prevAnimRef = useRef()
     const prevAnim = prevAnimRef.current;
@@ -24,6 +24,7 @@ function Home() {
         if (anim < 0) {
             anim = numAnimations - 1
         }
+        console.log("anim: " + anim)
         setCurrAnim(anim)
     }
 

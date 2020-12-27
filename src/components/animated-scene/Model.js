@@ -14,10 +14,14 @@ function Model(props) {
 
     useEffect(() => {
         mixer = new THREE.AnimationMixer(scene);
-        let animationsArr = []
-        animationsArr.push(THREE.AnimationClip.findByName(animations, "bender"))
-        animationsArr.push(THREE.AnimationClip.findByName(animations, "Key.001Action"))
-        animationsArr.map(clip => mixer.clipAction(clip).play())
+        // let animationsArr = []
+
+        for (let i = 0; i < animations.length; i++) {
+            mixer.clipAction(animations[i]).play()
+        }
+        // animationsArr.push(THREE.AnimationClip.findByName(animations, "bender"))
+        // animationsArr.push(THREE.AnimationClip.findByName(animations, "Key.001Action"))
+        // animationsArr.map(clip => mixer.clipAction(clip).play())
 
         obj.camera = camera
         obj.floor = scene.getObjectByName("Floor", true)
@@ -30,6 +34,7 @@ function Model(props) {
         obj.scene0Empty = scene.getObjectByName('Scene0Empty', true)
         obj.scene1Empty = scene.getObjectByName('Scene1Empty', true)
         obj.scene2Empty = scene.getObjectByName('Scene2Empty', true)
+        obj.scene3Empty = scene.getObjectByName('Scene3Empty', true)
         obj.octopusArm = obj.scene2Empty.getObjectByName('OctopusArm')
 
         scene.traverse(child => {
@@ -44,6 +49,7 @@ function Model(props) {
         obj.scene0Empty.visible = false
         obj.scene1Empty.visible = false
         obj.scene2Empty.visible = false
+        obj.scene3Empty.visible = false
         obj.platform.visible = false
         gsap.fromTo(obj.camera.position, { y: 0 }, { duration: 5, x: 1, y: 3 })
         gsap.from(obj.mainEmpty.scale, { duration: 3.5, x: 0, y: 0, z: 0, ease: 'elastic.out(1, 1)' })

@@ -20,8 +20,10 @@ export default function Animation1(props) {
     return null
 }
 function playAnimation() {
+    console.log("Play 1")
     setTimeout(() => {
         gsap.set(obj.scene1Empty, { visible: true })
+        gsap.set(obj.platform, { visible: true })
         gsap.fromTo(obj.platform.position, { y: -2 }, { duration: 2, y: 1.2, ease: 'elastic.out(1, 1)' })
         myReq = requestAnimationFrame(animate);
     }, 2000);

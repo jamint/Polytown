@@ -23,6 +23,7 @@ export default function Animation0(props) {
     return null
 }
 function playAnimation() {
+    console.log("Play 0")
     setTimeout(() => {
         obj.platform.visible = true
         gsap.set(obj.scene0Empty, { visible: true })

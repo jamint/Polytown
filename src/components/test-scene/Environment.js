@@ -8,7 +8,8 @@ export default function Environment({ background = false }) {
     const [cubeMap] = useLoader(HDRCubeTextureLoader, [['px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr']], loader => {
         loader.setDataType(THREE.UnsignedByteType)
         // loader.setPath('/pisaHDR/')
-        loader.setPath('/canary2HDR/')
+        loader.setPath('/canaryHDR/')
+        // loader.setPath('/canary2HDR/')
     })
     useEffect(() => {
         const gen = new THREE.PMREMGenerator(gl)

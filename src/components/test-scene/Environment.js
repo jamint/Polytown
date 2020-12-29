@@ -7,8 +7,8 @@ export default function Environment({ background = false }) {
     const { gl, scene } = useThree()
     const [cubeMap] = useLoader(HDRCubeTextureLoader, [['px.hdr', 'nx.hdr', 'py.hdr', 'ny.hdr', 'pz.hdr', 'nz.hdr']], loader => {
         loader.setDataType(THREE.UnsignedByteType)
-        // loader.setPath('/pisaHDR/')
-        loader.setPath('/canaryHDR/')
+        loader.setPath('/pisaHDR/')
+        // loader.setPath('/canaryHDR/')
         // loader.setPath('/canary2HDR/')
     })
     useEffect(() => {

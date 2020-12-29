@@ -7,34 +7,36 @@ import { numAnimations } from '../components/animated-scene/AnimationController'
 export const AnimStateContext = React.createContext();
 
 function Home() {
-    const [currAnim, setCurrAnim] = useState(3)
+    // const [currAnim, setCurrAnim] = useState(3)
 
-    const prevAnimRef = useRef()
-    const prevAnim = prevAnimRef.current;
+    // const prevAnimRef = useRef()
+    // const prevAnim = prevAnimRef.current;
 
-    useEffect(() => {
-        prevAnimRef.current = currAnim;
-    }, [currAnim]);
+    // useEffect(() => {
+    //     prevAnimRef.current = currAnim;
+    // }, [currAnim]);
 
-    function changeNum(direction) {
-        let anim = (direction === "left") ? currAnim - 1 : currAnim + 1
+    // function changeNum(direction) {
+    //     let anim = (direction === "left") ? currAnim - 1 : currAnim + 1
 
-        if (anim >= numAnimations) {
-            anim = 0
-        }
-        if (anim < 0) {
-            anim = numAnimations - 1
-        }
-        console.log("anim: " + anim)
-        setCurrAnim(anim)
-    }
+    //     if (anim >= numAnimations) {
+    //         anim = 0
+    //     }
+    //     if (anim < 0) {
+    //         anim = numAnimations - 1
+    //     }
+    //     console.log("anim: " + anim)
+    //     setCurrAnim(anim)
+    // }
 
     return (
-        <AnimStateContext.Provider value={{ currAnim, prevAnim }} >
+        // <AnimStateContext.Provider value={{ currAnim, prevAnim }} >
+        <>
             <TestScene />
-            {/* <AnimatedScene />
-            <AnimationUI handleAnimChange={(direction) => changeNum(direction)} /> */}
-        </ AnimStateContext.Provider>
+        </>
+        //     <AnimatedScene />
+        //     <AnimationUI handleAnimChange={(direction) => changeNum(direction)} /> */}
+        // </ AnimStateContext.Provider>
     );
 }
 

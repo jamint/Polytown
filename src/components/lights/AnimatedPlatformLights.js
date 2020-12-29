@@ -1,9 +1,10 @@
 const AnimatedPlatformLights = () => {
+    const intensity = 0.3
     return (
         <>
-            <ambientLight intensity={0.3} />
+            <ambientLight intensity={intensity} />
             <spotLight
-                intensity={0.9}
+                intensity={intensity}
                 position={[5, 5, 5]}
                 castShadow
                 penumbra={0.5}
@@ -13,7 +14,7 @@ const AnimatedPlatformLights = () => {
                 shadow-mapSize-width={1024}
             />
             <spotLight
-                intensity={0.9}
+                intensity={intensity}
                 position={[-5, 5, 5]}
                 castShadow
                 penumbra={0.5}
@@ -23,7 +24,7 @@ const AnimatedPlatformLights = () => {
                 shadow-mapSize-width={1024}
             />
             <pointLight
-                intensity={0.9}
+                intensity={intensity}
                 position={[1, 5, 1]}
                 castShadow
                 shadowBias={-0.0004}

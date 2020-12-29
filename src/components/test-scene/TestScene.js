@@ -9,13 +9,16 @@ import Lights from '../lights/AnimatedPlatformLights'
 // import Lights from '../lights/LightTest1'
 import Effects from './Effects'
 
-const Model = () => {
+const Model = ({
+    path,
+    position = [0, 0, 0]
+}) => {
     const { camera } = useThree()
     // let { scene } = useLoader(GLTFLoader, '/models/garsone-01.glb')
     // let { scene } = useLoader(GLTFLoader, '/models/animate-bones.glb')
     // let { scene } = useLoader(GLTFLoader, '/models/garsone-01.glb')
-    // let { scene } = useLoader(GLTFLoader, '/models/schnitzel-01.glb')
-    let { scene } = useLoader(GLTFLoader, '/models/test-01.glb')
+    let { scene } = useLoader(GLTFLoader, path)
+    // let { scene } = useLoader(GLTFLoader, '/models/test-01.glb')
     // let { scene } = useLoader(GLTFLoader, '/models/test-02.glb')
     scene.traverse((s => {
         if (s.isMesh) {
@@ -24,7 +27,7 @@ const Model = () => {
             if (s.material.map) s.material.map.anisotropy = 16
         }
     }))
-    return <primitive object={scene} receiveShadow position={[0, 0, 0]} />
+    return <primitive object={scene} receiveShadow position={position} />
 }
 
 export default function TestScene() {
@@ -36,7 +39,7 @@ export default function TestScene() {
                 concurrent
                 camera={{
                     fov: 40,
-                    position: [1, 4, 12],
+                    position: [0, 3, 12],
                 }}
                 onCreated={({ gl, scene }) => {
                     gl.toneMapping = THREE.ACESFilmicToneMapping
@@ -45,10 +48,23 @@ export default function TestScene() {
                 <Lights />
                 <Suspense fallback={null}>
                     <Environment />
-                    <Model />
+                    <Model path={'/models/floor-01.glb'} />
+                    <group position={[-1.2, 0, 0]}>
+                        <Model path={'/models/schnitzel-01.glb'} position={[-4, 0, 0]} />
+                        <Model path={'/models/garsone-01.glb'} position={[-1, 0, 0]} />
+                        <Model path={'/models/cornwall-01.glb'} position={[2, 0, 0]} />
+                        <Model path={'/models/magpie-01.glb'} position={[5, 0, 0]} />
+                    </group>
+                    {/* <Model path={'/models/gillespie-01.glb'} /> */}
                     {/* <Effects /> */}
                 </Suspense>
-                <OrbitControls enableZoom={true} />
+                <OrbitControls
+                    enableZoom={true}
+                    minPolarAngle={1}
+                    maxPolarAngle={1.5}
+                    maxAzimuthAngle={0.5}
+                    minAzimuthAngle={-0.5}
+                />
             </Canvas>
         </div >
     );

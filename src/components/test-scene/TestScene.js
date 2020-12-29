@@ -49,7 +49,7 @@ export default function TestScene() {
                 <Suspense fallback={null}>
                     <Environment />
                     <Model path={'/models/floor-01.glb'} />
-                    <group position={[-1.2, 0, 0]}>
+                    <group position={[-0.6, 0, 0]}>
                         <Model path={'/models/schnitzel-01.glb'} position={[-4, 0, 0]} />
                         <Model path={'/models/garsone-01.glb'} position={[-1, 0, 0]} />
                         <Model path={'/models/cornwall-01.glb'} position={[2, 0, 0]} />

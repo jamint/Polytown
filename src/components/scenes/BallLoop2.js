@@ -4,10 +4,9 @@ import { Canvas, useLoader, useThree, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
 import * as THREE from 'three'
-import Environment from './Environment'
+import EnvironmentLighting from '../lights/EnvironmentLighting'
 import Lights from '../lights/AnimatedPlatformLights'
 // import Lights from '../lights/LightTest1'
-import Effects from './Effects'
 
 let mixer = null
 
@@ -53,7 +52,7 @@ export default function AnimationTestScene() {
                 concurrent
                 camera={{
                     fov: 40,
-                    position: [0, 3, 12],
+                    position: [6, 3, 12],
                 }}
                 onCreated={({ gl, scene }) => {
                     gl.toneMapping = THREE.ACESFilmicToneMapping
@@ -61,11 +60,11 @@ export default function AnimationTestScene() {
                 }} >
                 <Lights />
                 <Suspense fallback={null}>
-                    <Environment />
-                    <Model path={'/models/ball-loop.glb'} />
+                    <EnvironmentLighting />
+                    <Model path={'/models/cool-scene-01.glb'} />
                 </Suspense>
                 <OrbitControls
-                    enableZoom={true}
+                    enableZoom={false}
                     minPolarAngle={1}
                     maxPolarAngle={1.5}
                     maxAzimuthAngle={0.5}

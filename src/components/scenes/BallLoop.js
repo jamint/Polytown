@@ -4,10 +4,9 @@ import { Canvas, useLoader, useThree, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
 import * as THREE from 'three'
-import Environment from './Environment'
+import EnvironmentLighting from '../lights/EnvironmentLighting'
 import Lights from '../lights/AnimatedPlatformLights'
 // import Lights from '../lights/LightTest1'
-import Effects from './Effects'
 
 let mixer = null
 
@@ -61,7 +60,7 @@ export default function AnimationTestScene() {
                 }} >
                 <Lights />
                 <Suspense fallback={null}>
-                    <Environment />
+                    <EnvironmentLighting />
                     <Model path={'/models/ball-loop.glb'} />
                 </Suspense>
                 <OrbitControls

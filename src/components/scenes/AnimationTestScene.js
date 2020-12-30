@@ -7,7 +7,7 @@ import * as THREE from 'three'
 import Environment from './Environment'
 import Lights from '../lights/AnimatedPlatformLights'
 // import Lights from '../lights/LightTest1'
-import Effects from './Effects'
+import EnvironmentLighting from './lights/EnvironmentLighting'
 
 let mixer = null
 
@@ -76,7 +76,7 @@ export default function AnimationTestScene() {
                 }} >
                 <Lights />
                 <Suspense fallback={null}>
-                    <Environment />
+                    <EnvironmentLighting />
                     <Model path={'/models/animation-08.glb'} />
                     {/* <Model path={'/models/RobotExpressive.glb'} /> */}
                 </Suspense>

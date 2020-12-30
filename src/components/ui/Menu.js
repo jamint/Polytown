@@ -28,9 +28,9 @@ export default function Menu() {
             <div className="menu" onClick={() => handleClick()} >
                 <div className="close"></div>
                 <ul>
-                    <li><Link to="/ball-loop" >Ball Loop</Link></li>
-                    <li><Link to="/ball-loop-2" >Ball Loop 2</Link></li>
-                    <li><Link to="/characters" >Characters</Link></li>
+                    <li><Link to="/ball-loop">Ball Loop</Link></li>
+                    <li><Link to="/ball-loop-2">Fire Truck</Link></li>
+                    <li><Link to="/characters">Characters</Link></li>
                 </ul>
             </div>
         </>

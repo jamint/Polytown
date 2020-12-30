@@ -5,6 +5,7 @@ import {
 import { Provider } from 'react-redux';
 import store from './store';
 
+import './styles/loading.scss'
 import Main from './components/Main'
 import Header from './components/Header'
 import Menu from './components/ui/Menu'
@@ -14,6 +15,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <div className="App">
+          <div className="loading">LOADING...</div>
           <Main />
           <Header />
           <Menu />

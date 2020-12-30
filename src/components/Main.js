@@ -3,12 +3,9 @@ import {
     Route,
 } from "react-router-dom";
 
-// import Home from '../pages/Home'
-// import Shop from '../pages/Shop'
-// import About from '../pages/About'
-import BallLoop from './test-scene/BallLoop'
-import BallLoop2 from './test-scene/BallLoop2'
-import Characters from './test-scene/Characters'
+import BallLoop from './scenes/BallLoop'
+import BallLoop2 from './scenes/BallLoop2'
+import Characters from './scenes/Characters'
 
 function Main() {
     return (

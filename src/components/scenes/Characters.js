@@ -4,10 +4,9 @@ import { Canvas, useLoader, useThree } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
 import * as THREE from 'three'
-import Environment from './Environment'
+import EnvironmentLighting from '../lights/EnvironmentLighting'
 import Lights from '../lights/AnimatedPlatformLights'
 // import Lights from '../lights/LightTest1'
-import Effects from './Effects'
 
 const Model = ({
     path,
@@ -42,7 +41,7 @@ export default function TestScene() {
                 }} >
                 <Lights />
                 <Suspense fallback={null}>
-                    <Environment />
+                    <EnvironmentLighting />
                     <Model path={'/models/floor-01.glb'} />
                     <group position={[-0.6, 0, 0]}>
                         <Model path={'/models/schnitzel-04.glb'} position={[-4, 0, 0]} />

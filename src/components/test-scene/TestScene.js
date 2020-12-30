@@ -14,12 +14,7 @@ const Model = ({
     position = [0, 0, 0]
 }) => {
     const { camera } = useThree()
-    // let { scene } = useLoader(GLTFLoader, '/models/garsone-01.glb')
-    // let { scene } = useLoader(GLTFLoader, '/models/animate-bones.glb')
-    // let { scene } = useLoader(GLTFLoader, '/models/garsone-01.glb')
     let { scene } = useLoader(GLTFLoader, path)
-    // let { scene } = useLoader(GLTFLoader, '/models/test-01.glb')
-    // let { scene } = useLoader(GLTFLoader, '/models/test-02.glb')
     scene.traverse((s => {
         if (s.isMesh) {
             s.castShadow = true

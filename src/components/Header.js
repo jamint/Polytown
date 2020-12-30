@@ -6,10 +6,10 @@ function Header() {
             <h1>
                 <Link to="/">R3F</Link>
             </h1>
-            <ul>
+            {/* <ul>
                 <li><Link to="/shop">About</Link></li>
                 <li><Link to="/about">Contact</Link></li>
-            </ul>
+            </ul> */}
         </header>
     );
 }

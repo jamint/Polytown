@@ -1,0 +1,20 @@
+.label {
+    color: white;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    cursor: pointer;
+}
+.menu {
+    display: none;
+    position: absolute;
+    color: #fff;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: orange;
+    &.open {
+        display: block;
+    }
+}

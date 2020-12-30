@@ -4,8 +4,8 @@ header {
   display: flex;
   position: absolute;
   top: 0;
-  font-family: Helvetica, Arial, sans-serif;
-  width: 100%;
+  // font-family: Helvetica, Arial, sans-serif;
+  width: 5%;
   justify-content: space-between;
   align-items: center;
   color: #fff;
@@ -15,15 +15,15 @@ header {
     margin: 10px 16px;
     padding: 0;
   }
-  ul {
-    display: flex;
-    list-style-type: none;
-    margin: 0 20px 0 0;
-    padding: 0;
-  }
-  li {
-    margin: 5px 20px;
-  }
+  // ul {
+  //   display: flex;
+  //   list-style-type: none;
+  //   margin: 0 20px 0 0;
+  //   padding: 0;
+  // }
+  // li {
+  //   margin: 5px 20px;
+  // }
 }
 
 .buttons {

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 // import TestScene from '../components/test-scene/TestScene'
 import AnimationTestScene from '../components/test-scene/AnimationTestScene'
 import BallLoop from '../components/test-scene/BallLoop'
+import Menu from '../components/ui/Menu'
 // import AnimatedScene from '../components/animated-scene/AnimatedScene'
 // import AnimationUI from '../components/animated-scene/AnimationUI'
 import { numAnimations } from '../components/animated-scene/AnimationController'
@@ -37,6 +38,7 @@ function Home() {
             {/* <TestScene /> */}
             {/* <AnimationTestScene /> */}
             <BallLoop />
+            <Menu />
         </>
         //     <AnimatedScene />
         //     <AnimationUI handleAnimChange={(direction) => changeNum(direction)} /> */}

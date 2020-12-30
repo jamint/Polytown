@@ -1,11 +1,13 @@
 import './App.scss';
-import Header from './components/Header'
-import Main from './components/Main'
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from './store';
+
+import Main from './components/Main'
+import Header from './components/Header'
+import Menu from './components/ui/Menu'
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
         <div className="App">
           <Main />
           <Header />
+          <Menu />
         </div>
       </Router>
     </Provider>

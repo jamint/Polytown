@@ -11,9 +11,23 @@
     color: #fff;
     top: 0;
     right: 0;
-    width: 250px;
+    width: 350px;
     height: 100%;
-    background: orange;
+    background: #000;
+    font-size: 1.1rem;
+    .close {
+        width: 20px;
+        height: 20px;
+        background: white;
+    }
+    ul {
+        // margin-top: 100px;
+        list-style-type: none;
+        padding: 30px;
+        li {
+            padding-bottom: 10px;
+        }
+    }
     &.open {
         display: block;
     }

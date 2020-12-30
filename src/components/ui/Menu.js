@@ -21,16 +21,16 @@ export default function Menu() {
 
     function handleClick() {
         setPanelIsOpen(!panelIsOpen)
-        console.log('clicked')
     }
     return (
         <>
-            <div className="label" onClick={() => handleClick()}>More</div>
-            <div className="menu">
+            <div className="label" onClick={() => handleClick()}>Experiments</div>
+            <div className="menu" onClick={() => handleClick()} >
+                <div className="close"></div>
                 <ul>
-                    <li><Link to="/shop">About</Link></li>
-                    <li>Two</li>
-                    <li>Three</li>
+                    <li><Link to="/ball-loop" >Ball Loop</Link></li>
+                    <li><Link to="/ball-loop-2" >Ball Loop 2</Link></li>
+                    <li><Link to="/characters" >Characters</Link></li>
                 </ul>
             </div>
         </>

@@ -64,7 +64,7 @@ export default function AnimationTestScene() {
                     <Model path={'/models/cool-scene-01.glb'} />
                 </Suspense>
                 <OrbitControls
-                    enableZoom={false}
+                    enableZoom={true}
                     minPolarAngle={1}
                     maxPolarAngle={1.5}
                     maxAzimuthAngle={0.5}

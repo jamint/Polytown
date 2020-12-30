@@ -27,23 +27,8 @@ const Model = ({
             const action = mixer.clipAction(clip);
             actions[clip.name] = action;
             action.play()
-            // mixer.clipAction(animations[i]).play()
-            // mixer.clipAction(animations[i]).setLoop(THREE.LoopOnce)
-            // mixer.clipAction(animations[i]).clampWhenFinished = true
         }
-        // console.log(actions)
-        console.log(animations)
-        // actions.Crazy.play()
-        // setTimeout(() => {
-        //     console.log(1)
-        //     actions.Crazy.fadeOut(1)
-        //     actions.Scaler.reset().fadeIn(3).play()
-        // }, 5000);
-        // setTimeout(() => {
-        //     console.log(2)
-        //     actions.Scaler.fadeOut(1)
-        //     actions.Crazy.reset().fadeIn(1).play()
-        // }, 10000);
+
         scene.traverse((s => {
             if (s.isMesh) {
                 s.castShadow = true
@@ -77,8 +62,7 @@ export default function AnimationTestScene() {
                 <Lights />
                 <Suspense fallback={null}>
                     <Environment />
-                    <Model path={'/models/animation-08.glb'} />
-                    {/* <Model path={'/models/RobotExpressive.glb'} /> */}
+                    <Model path={'/models/ball-loop.glb'} />
                 </Suspense>
                 <OrbitControls
                     enableZoom={true}

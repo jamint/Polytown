@@ -16,7 +16,7 @@ export default function Menu() {
         } else {
             btn.classList.remove('open')
         }
-        console.log(panelIsOpen)
+        // console.log(panelIsOpen)
     }, [panelIsOpen])
 
     function handleClick() {
@@ -28,9 +28,11 @@ export default function Menu() {
             <div className="menu" onClick={() => handleClick()} >
                 <div className="close"></div>
                 <ul>
+                    <li><Link to="/balls">Balls</Link></li>
                     <li><Link to="/ball-loop">Ball Loop</Link></li>
                     <li><Link to="/characters">Characters</Link></li>
-                    <li><Link to="/fire-station">Fire Truck</Link></li>
+                    <li><Link to="/tester">Tester</Link></li>
+                    {/* <li><Link to="/fire-station">Fire Truck</Link></li> */}
                 </ul>
             </div>
         </>

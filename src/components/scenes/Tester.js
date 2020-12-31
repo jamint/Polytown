@@ -4,10 +4,9 @@ import { Canvas, useLoader, useThree, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
 import * as THREE from 'three'
-import Environment from './Environment'
+import EnvironmentLighting from '../lights/EnvironmentLighting'
 import Lights from '../lights/AnimatedPlatformLights'
 // import Lights from '../lights/LightTest1'
-import EnvironmentLighting from './lights/EnvironmentLighting'
 
 let mixer = null
 
@@ -27,23 +26,8 @@ const Model = ({
             const action = mixer.clipAction(clip);
             actions[clip.name] = action;
             action.play()
-            // mixer.clipAction(animations[i]).play()
-            // mixer.clipAction(animations[i]).setLoop(THREE.LoopOnce)
-            // mixer.clipAction(animations[i]).clampWhenFinished = true
         }
-        // console.log(actions)
-        // console.log(animations)
-        // actions.Crazy.play()
-        // setTimeout(() => {
-        //     console.log(1)
-        //     actions.Crazy.fadeOut(1)
-        //     actions.Scaler.reset().fadeIn(3).play()
-        // }, 5000);
-        // setTimeout(() => {
-        //     console.log(2)
-        //     actions.Scaler.fadeOut(1)
-        //     actions.Crazy.reset().fadeIn(1).play()
-        // }, 10000);
+
         scene.traverse((s => {
             if (s.isMesh) {
                 s.castShadow = true
@@ -68,7 +52,7 @@ export default function AnimationTestScene() {
                 concurrent
                 camera={{
                     fov: 40,
-                    position: [0, 3, 12],
+                    position: [6, 3, 12],
                 }}
                 onCreated={({ gl, scene }) => {
                     gl.toneMapping = THREE.ACESFilmicToneMapping
@@ -77,8 +61,7 @@ export default function AnimationTestScene() {
                 <Lights />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />
-                    <Model path={'/models/animation-08.glb'} />
-                    {/* <Model path={'/models/RobotExpressive.glb'} /> */}
+                    <Model path={'/models/tester-01.glb'} />
                 </Suspense>
                 <OrbitControls
                     enableZoom={true}

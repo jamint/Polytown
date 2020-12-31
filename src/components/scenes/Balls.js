@@ -4,18 +4,51 @@ import { Canvas, useLoader, useThree, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
 import * as THREE from 'three'
-import Environment from './Environment'
+import EnvironmentLighting from '../lights/EnvironmentLighting'
 import Lights from '../lights/AnimatedPlatformLights'
-// import Lights from '../lights/LightTest1'
-import EnvironmentLighting from './lights/EnvironmentLighting'
+import gsap from 'gsap'
 
 let mixer = null
+
+const playScene = (scene) => {
+    let balls = []
+    const spread = 5
+    let ball = null
+    for (let i = 0; i < 100; i++) {
+        ball = scene.getObjectByName("Ball")
+        const clone = ball.clone()
+        clone.name = "ball" + i
+        scene.add(clone)
+        balls.push(clone)
+    }
+    ball.position.x = 5000
+
+    for (let i = 0; i < 100; i++) {
+        const ball = balls[i]
+        ball.scale.set(0, 0, 0)
+        gsap.to(ball.position, {
+            duration: 1,
+            x: THREE.MathUtils.randFloatSpread(spread),
+            y: THREE.MathUtils.randFloatSpread(spread),
+            z: THREE.MathUtils.randFloatSpread(spread),
+            ease: 'elastic.out(1, 1)',
+            delay: 1 + i * 0.005
+        })
+        gsap.to(ball.scale, {
+            duration: 1,
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: 'elastic.out(1, 1)',
+            delay: 1 + i * 0.005
+        })
+    }
+}
 
 const Model = ({
     path,
     position = [0, 0, 0]
 }) => {
-    const { camera } = useThree()
     let { scene, animations } = useLoader(GLTFLoader, path)
     let actions = null
 
@@ -27,23 +60,8 @@ const Model = ({
             const action = mixer.clipAction(clip);
             actions[clip.name] = action;
             action.play()
-            // mixer.clipAction(animations[i]).play()
-            // mixer.clipAction(animations[i]).setLoop(THREE.LoopOnce)
-            // mixer.clipAction(animations[i]).clampWhenFinished = true
         }
-        // console.log(actions)
-        // console.log(animations)
-        // actions.Crazy.play()
-        // setTimeout(() => {
-        //     console.log(1)
-        //     actions.Crazy.fadeOut(1)
-        //     actions.Scaler.reset().fadeIn(3).play()
-        // }, 5000);
-        // setTimeout(() => {
-        //     console.log(2)
-        //     actions.Scaler.fadeOut(1)
-        //     actions.Crazy.reset().fadeIn(1).play()
-        // }, 10000);
+
         scene.traverse((s => {
             if (s.isMesh) {
                 s.castShadow = true
@@ -51,12 +69,17 @@ const Model = ({
                 if (s.material.map) s.material.map.anisotropy = 16
             }
         }))
+        playScene(scene)
     }, [])
     useFrame((state, delta) => {
         mixer.update(delta);
     });
 
-    return <primitive object={scene} receiveShadow position={position} />
+    return (
+        <>
+            <primitive object={scene} receiveShadow position={position} />
+        </>
+    )
 }
 
 export default function AnimationTestScene() {
@@ -68,17 +91,17 @@ export default function AnimationTestScene() {
                 concurrent
                 camera={{
                     fov: 40,
-                    position: [0, 3, 12],
+                    position: [6, 3, 12],
                 }}
                 onCreated={({ gl, scene }) => {
                     gl.toneMapping = THREE.ACESFilmicToneMapping
                     gl.outputEncoding = THREE.sRGBEncoding
+                    scene.background = new THREE.Color('#000000')
                 }} >
                 <Lights />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />
-                    <Model path={'/models/animation-08.glb'} />
-                    {/* <Model path={'/models/RobotExpressive.glb'} /> */}
+                    <Model path={'/models/balls-01.glb'} />
                 </Suspense>
                 <OrbitControls
                     enableZoom={true}

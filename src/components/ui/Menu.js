@@ -29,8 +29,8 @@ export default function Menu() {
                 <div className="close"></div>
                 <ul>
                     <li><Link to="/ball-loop">Ball Loop</Link></li>
-                    <li><Link to="/ball-loop-2">Fire Truck</Link></li>
                     <li><Link to="/characters">Characters</Link></li>
+                    <li><Link to="/fire-station">Fire Truck</Link></li>
                 </ul>
             </div>
         </>

@@ -52,7 +52,7 @@ export default function AnimationTestScene() {
                 concurrent
                 camera={{
                     fov: 40,
-                    position: [6, 3, 12],
+                    position: [6, 3, 22],
                 }}
                 onCreated={({ gl, scene }) => {
                     gl.toneMapping = THREE.ACESFilmicToneMapping

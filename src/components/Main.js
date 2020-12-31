@@ -4,8 +4,8 @@ import {
 } from "react-router-dom";
 
 import BallLoop from './scenes/BallLoop'
-import BallLoop2 from './scenes/BallLoop2'
 import Characters from './scenes/Characters'
+import FireStation from './scenes/FireStation'
 
 function Main() {
     return (
@@ -13,8 +13,8 @@ function Main() {
             <Switch>
                 <Route exact path='/' component={BallLoop} />
                 <Route exact path='/ball-loop' component={BallLoop} />
-                <Route path='/ball-loop-2' component={BallLoop2} />
                 <Route path='/characters' component={Characters} />
+                <Route path='/fire-station' component={FireStation} />
             </Switch>
         </main>
     );

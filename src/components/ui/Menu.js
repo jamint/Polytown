@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import Shop from '../../pages/Shop'
 import {
-    Link
+    Link,
+    NavLink
 } from "react-router-dom";
 import '../../styles/menu.scss'
 
@@ -26,13 +27,16 @@ export default function Menu() {
         <>
             <div className="label" onClick={() => handleClick()}>Experiments</div>
             <div className="menu" onClick={() => handleClick()} >
-                <div className="close"></div>
+                <div className="close">
+                    <div className="btn">&#10005;</div>
+                </div>
                 <ul>
-                    <li><Link to="/kaleidoscope-color">Kaleidoscope Color</Link></li>
-                    <li><Link to="/kaleidoscope-chocolate">Kaleidoscope Chocolate</Link></li>
-                    <li><Link to="/balls">Balls</Link></li>
-                    <li><Link to="/ball-loop">Ball Loop</Link></li>
-                    <li><Link to="/characters">Characters</Link></li>
+                    <NavLink activeClassName="active" to="/kaleidoscope-color"><li>Kaleidoscope Color</li></NavLink>
+                    <NavLink activeClassName="active" to="/kaleidoscope-chocolate"><li>Kaleidoscope Chocolate</li></NavLink>
+                    <NavLink activeClassName="active" to="/balls"><li>Balls</li></NavLink>
+                    <NavLink activeClassName="active" to="/ball-loop"><li>Ball Loop</li></NavLink>
+                    <NavLink activeClassName="active" to="/characters"><li>Characters</li></NavLink>
+
                 </ul>
             </div>
         </>

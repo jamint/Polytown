@@ -6,7 +6,6 @@ import {
 import BallLoop from './scenes/BallLoop'
 import Balls from './scenes/Balls'
 import Characters from './scenes/Characters'
-import FireStation from './scenes/FireStation'
 import KaleidoscopeColor from './scenes/KaleidoscopeColor'
 import KaleidoscopeChocolate from './scenes/KaleidoscopeChocolate'
 
@@ -20,7 +19,6 @@ function Main() {
                 <Route exact path='/balls' component={Balls} />
                 <Route exact path='/ball-loop' component={BallLoop} />
                 <Route path='/characters' component={Characters} />
-                {/* <Route path='/fire-station' component={FireStation} /> */}
             </Switch>
         </main>
     );

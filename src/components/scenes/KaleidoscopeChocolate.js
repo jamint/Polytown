@@ -33,7 +33,11 @@ const Model = ({
 
     useEffect(() => {
         camera = world.camera
-        gsap.from(camera.position, { duration: 3, x: -4, y: 3, z: 18 })
+        gsap.fromTo(camera.position, { x: -2, y: 0, z: 25 }, {
+            duration: 7, x: 4, y: -1, z: 15, onComplete: () => {
+                gsap.to(camera.position, { duration: 7, x: -4, repeat: -1, yoyo: true, ease: "power1.inOut" })
+            }
+        })
 
         const model = gltf.scene,
             fileAnimations = gltf.animations,
@@ -118,7 +122,7 @@ export default function KaleidoscopeChocolate() {
                     <Floor path={'/models/tester-02-bg.glb'} />
                 </Suspense>
                 <OrbitControls
-                    enableZoom={true}
+                    enableZoom={false}
                     minPolarAngle={1}
                     maxPolarAngle={1.5}
                     maxAzimuthAngle={0.5}

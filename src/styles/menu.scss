@@ -8,7 +8,7 @@
 .menu {
     display: none;
     position: absolute;
-    color: #fff;
+    color: grey;
     top: 0;
     right: 0;
     width: 350px;
@@ -16,19 +16,29 @@
     background: #000;
     font-size: 1.1rem;
     .close {
-        width: 20px;
-        height: 20px;
-        background: white;
+        position: relative;
+        width: 100%;
+        text-align: right;
+        .btn {
+            font-size: 1.2rem;
+            margin: 15px;
+            display: inline-block;
+            color: #fff;
+        }
     }
     ul {
         // margin-top: 100px;
         list-style-type: none;
-        padding: 30px;
+        padding: 10px 30px;
         li {
             padding-bottom: 17px;
         }
     }
     &.open {
         display: block;
+    }
+    .active {
+        font-weight: bold;
+        color: #fff;
     }
 }

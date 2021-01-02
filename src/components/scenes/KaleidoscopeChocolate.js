@@ -34,7 +34,7 @@ const Model = ({
     useEffect(() => {
         camera = world.camera
         gsap.fromTo(camera.position, { x: -2, y: 0, z: 25 }, {
-            duration: 7, x: 4, y: -1, z: 15, onComplete: () => {
+            duration: 7, x: 4, y: -1, z: 15, ease: "power1.out", onComplete: () => {
                 gsap.to(camera.position, { duration: 7, x: -4, repeat: -1, yoyo: true, ease: "power1.inOut" })
             }
         })
@@ -123,8 +123,8 @@ export default function KaleidoscopeChocolate() {
                 </Suspense>
                 <OrbitControls
                     enableZoom={false}
-                    minPolarAngle={1}
-                    maxPolarAngle={1.5}
+                    minPolarAngle={1.2}
+                    maxPolarAngle={1.8}
                     maxAzimuthAngle={0.5}
                     minAzimuthAngle={-0.5}
                 />

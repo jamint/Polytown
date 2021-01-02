@@ -124,8 +124,8 @@ export default function KaleidoscopeColor() {
                 </Suspense>
                 <OrbitControls
                     enableZoom={false}
-                    minPolarAngle={1}
-                    maxPolarAngle={1.5}
+                    minPolarAngle={1.2}
+                    maxPolarAngle={1.8}
                     maxAzimuthAngle={0.5}
                     minAzimuthAngle={-0.5}
                 />

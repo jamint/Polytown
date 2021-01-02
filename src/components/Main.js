@@ -7,16 +7,16 @@ import BallLoop from './scenes/BallLoop'
 import Balls from './scenes/Balls'
 import Characters from './scenes/Characters'
 import FireStation from './scenes/FireStation'
-import Tester from './scenes/Tester'
-import Tester2 from './scenes/Tester2'
+import KaleidoscopeColor from './scenes/KaleidoscopeColor'
+import KaleidoscopeChocolate from './scenes/KaleidoscopeChocolate'
 
 function Main() {
     return (
         <main>
             <Switch>
-                <Route exact path='/' component={Tester2} />
-                <Route path='/tester' component={Tester} />
-                <Route path='/tester2' component={Tester2} />
+                <Route exact path='/' component={KaleidoscopeChocolate} />
+                <Route path='/kaleidoscope-color' component={KaleidoscopeColor} />
+                <Route path='/kaleidoscope-chocolate' component={KaleidoscopeChocolate} />
                 <Route exact path='/balls' component={Balls} />
                 <Route exact path='/ball-loop' component={BallLoop} />
                 <Route path='/characters' component={Characters} />

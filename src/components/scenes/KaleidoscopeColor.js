@@ -44,7 +44,7 @@ const Model = ({
     return <primitive object={scene} receiveShadow position={position} />
 }
 
-export default function AnimationTestScene() {
+export default function KaleidoscopeColor() {
     return (
         <div className="three-anim">
             <Canvas

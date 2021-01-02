@@ -96,7 +96,7 @@ const Model = ({
     return <primitive object={gltf.scene} receiveShadow position={position} />
 }
 
-export default function AnimationTestScene() {
+export default function KaleidoscopeChocolate() {
     return (
         <div className="three-anim">
             <Canvas
@@ -115,8 +115,6 @@ export default function AnimationTestScene() {
                 <Suspense fallback={null}>
                     <EnvironmentLighting />
                     <Model path={'/models/tester-02.glb'} />
-                </Suspense>
-                <Suspense fallback={null}>
                     <Floor path={'/models/tester-02-bg.glb'} />
                 </Suspense>
                 <OrbitControls

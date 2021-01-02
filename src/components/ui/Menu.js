@@ -28,12 +28,11 @@ export default function Menu() {
             <div className="menu" onClick={() => handleClick()} >
                 <div className="close"></div>
                 <ul>
-                    <li><Link to="/tester">Tester</Link></li>
-                    <li><Link to="/tester2">Tester 2</Link></li>
+                    <li><Link to="/kaleidoscope-color">Kaleidoscope Color</Link></li>
+                    <li><Link to="/kaleidoscope-chocolate">Kaleidoscope Chocolate</Link></li>
                     <li><Link to="/balls">Balls</Link></li>
                     <li><Link to="/ball-loop">Ball Loop</Link></li>
                     <li><Link to="/characters">Characters</Link></li>
-                    {/* <li><Link to="/fire-station">Fire Truck</Link></li> */}
                 </ul>
             </div>
         </>

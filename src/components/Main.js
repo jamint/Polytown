@@ -17,7 +17,7 @@ function Main() {
                 <Route exact path='/balls' component={Balls} />
                 <Route exact path='/ball-loop' component={BallLoop} />
                 <Route path='/characters' component={Characters} />
-                <Route path='/fire-station' component={FireStation} />
+                {/* <Route path='/fire-station' component={FireStation} /> */}
                 <Route path='/tester' component={Tester} />
             </Switch>
         </main>

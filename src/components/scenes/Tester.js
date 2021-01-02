@@ -1,8 +1,8 @@
 
 import React, { Suspense, useEffect } from 'react'
-import { Canvas, useLoader, useThree, useFrame } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
+import { Canvas, useLoader, useThree, useFrame } from 'react-three-fiber'
 import * as THREE from 'three'
 import EnvironmentLighting from '../lights/EnvironmentLighting'
 import Lights from '../lights/AnimatedPlatformLights'
@@ -14,19 +14,20 @@ const Model = ({
     path,
     position = [0, 0, 0]
 }) => {
-    const { camera } = useThree()
     let { scene, animations } = useLoader(GLTFLoader, path)
     let actions = null
+    const numCopies = 9
 
     useEffect(() => {
-        mixer = new THREE.AnimationMixer(scene);
-        actions = {}
-        for (let i = 0; i < animations.length; i++) {
-            const clip = animations[i];
-            const action = mixer.clipAction(clip);
-            actions[clip.name] = action;
-            action.play()
+        const obj = scene.getObjectByName("Empty")
+        const rot = Math.PI * 2 / numCopies
+        for (let i = 0; i < numCopies; i++) {
+            const copy = obj.clone()
+            copy.name = "obj" + i
+            scene.add(copy)
+            copy.rotation.z = rot * i
         }
+        obj.position.x = 5000
 
         scene.traverse((s => {
             if (s.isMesh) {
@@ -37,7 +38,7 @@ const Model = ({
         }))
     }, [])
     useFrame((state, delta) => {
-        mixer.update(delta);
+        // mixer.update(delta);
     });
 
     return <primitive object={scene} receiveShadow position={position} />
@@ -52,7 +53,7 @@ export default function AnimationTestScene() {
                 concurrent
                 camera={{
                     fov: 40,
-                    position: [6, 3, 12],
+                    position: [0, 0, 12],
                 }}
                 onCreated={({ gl, scene }) => {
                     gl.toneMapping = THREE.ACESFilmicToneMapping

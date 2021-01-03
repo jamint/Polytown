@@ -34,7 +34,7 @@ const Model = ({
 
     useEffect(() => {
         camera = world.camera
-        gsap.fromTo(camera.position, { x: -2, y: 0, z: 5 }, {
+        gsap.fromTo(camera.position, { x: -2, y: 0, z: 10 }, {
             duration: 7, x: 4, y: -1, z: 15, onComplete: () => {
                 gsap.to(camera.position, { duration: 7, x: -4, repeat: -1, yoyo: true, ease: "power1.inOut" })
             }
@@ -66,7 +66,7 @@ const Model = ({
 
         let modified = {
             // loop: THREE.LoopOnce,
-            // clampWhenFinished: true,
+            clampWhenFinished: true,
             // timeScale: .3
         }
         mixers.map(mixer => {
@@ -80,7 +80,9 @@ const Model = ({
             }
         })
         actions.map((act, i) => {
-            actions[i].play()
+            setTimeout(() => {
+                actions[i].play()
+            }, 1000);
         })
     }, [])
 

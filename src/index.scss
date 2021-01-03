@@ -20,9 +20,10 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: #ff9966; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #4568dc, #b06ab3);
-  background: linear-gradient(to bottom, #4568dc, #b06ab3);
+  background: #000;
+  // background: #ff9966; /* fallback for old browsers */
+  // background: -webkit-linear-gradient(to bottom, #4568dc, #b06ab3);
+  // background: linear-gradient(to bottom, #4568dc, #b06ab3);
 }
 .three-anim {
   position: absolute;

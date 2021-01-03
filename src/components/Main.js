@@ -15,7 +15,7 @@ function Main() {
         <main>
             <Switch>
                 <Route exact path='/' component={Tester04} />
-                <Route exact path='/tester-03' component={Tester04} />
+                <Route exact path='/tester-04' component={Tester04} />
                 <Route path='/kaleidoscope-color' component={KaleidoscopeColor} />
                 <Route path='/kaleidoscope-chocolate' component={KaleidoscopeChocolate} />
                 <Route exact path='/balls' component={Balls} />

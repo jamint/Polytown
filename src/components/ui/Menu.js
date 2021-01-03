@@ -31,7 +31,7 @@ export default function Menu() {
                     <div className="btn">&#10005;</div>
                 </div>
                 <ul>
-                    <NavLink activeClassName="active" to="/tester-04"><li>Kaleidoscope Black and Gold</li></NavLink>
+                    <NavLink activeClassName="active" to="/"><li>Kaleidoscope Black and Gold</li></NavLink>
                     <NavLink activeClassName="active" to="/kaleidoscope-color"><li>Kaleidoscope Color</li></NavLink>
                     <NavLink activeClassName="active" to="/kaleidoscope-chocolate"><li>Kaleidoscope Chocolate</li></NavLink>
                     <NavLink activeClassName="active" to="/balls"><li>Balls</li></NavLink>

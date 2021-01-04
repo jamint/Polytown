@@ -32,6 +32,7 @@ const Model = ({
     const numCopies = 5
     const rot = Math.PI * 2 / numCopies
 
+
     useEffect(() => {
         camera = world.camera
         gsap.fromTo(camera.position, { x: -2, y: 0, z: 10 }, {

@@ -18,7 +18,7 @@ const Model = ({
     useEffect(() => {
         gsap.fromTo(camera.position, { x: -2, y: 3, z: 15 }, {
             duration: 5, x: 2, y: 3, z: 12, ease: "power1.out", onComplete: () => {
-                gsap.to(camera.position, { duration: 7, x: -4, repeat: -1, yoyo: true, ease: "power1.inOut" })
+                gsap.to(camera.position, { duration: 7, x: -1, repeat: -1, yoyo: true, ease: "power1.inOut" })
             }
         })
     })

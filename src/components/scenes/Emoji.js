@@ -106,7 +106,7 @@ const Model = ({
     return <primitive object={gltf.scene} receiveShadow position={position} />
 }
 
-export default function Tester03() {
+export default function Emoji() {
     return (
         <div className="three-anim">
             <Canvas
@@ -125,7 +125,7 @@ export default function Tester03() {
                 <Lights intensity={0.2} color={"#704C6B"} />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />
-                    <Model path={'/models/tester-03.glb'} />
+                    <Model path={'/models/emoji.glb'} />
                     {/* <Floor path={'/models/tester-01-bg.glb'} /> */}
                 </Suspense>
                 <OrbitControls

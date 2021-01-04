@@ -9,7 +9,7 @@ import Characters from './scenes/Characters'
 import KaleidoscopeColor from './scenes/KaleidoscopeColor'
 import KaleidoscopeChocolate from './scenes/KaleidoscopeChocolate'
 import KaleidoscopeGoldenShapes from './scenes/KaleidoscopeGoldenShapes'
-import Tester03 from './scenes/Tester03'
+import Emoji from './scenes/Emoji'
 
 function Main() {
     return (
@@ -17,7 +17,7 @@ function Main() {
             <Switch>
                 <Route exact path='/' component={KaleidoscopeGoldenShapes} />
                 <Route exact path='/kaleidoscope-golden-shapes' component={KaleidoscopeGoldenShapes} />
-                <Route exact path='/tester-03' component={Tester03} />
+                <Route exact path='/emoji' component={Emoji} />
                 <Route path='/kaleidoscope-color' component={KaleidoscopeColor} />
                 <Route path='/kaleidoscope-chocolate' component={KaleidoscopeChocolate} />
                 <Route exact path='/balls' component={Balls} />

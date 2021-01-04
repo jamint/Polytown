@@ -36,9 +36,9 @@ const Model = ({
 
     useEffect(() => {
         camera = world.camera
-        gsap.fromTo(camera.position, { x: 0, y: -1, z: 5 }, {
-            duration: 0, x: 1, y: -1, z: 7, onComplete: () => {
-                gsap.to(camera.position, { duration: 7, x: -1, repeat: -1, yoyo: true, ease: "power1.inOut" })
+        gsap.fromTo(camera.position, { x: 0, y: -1, z: 10 }, {
+            duration: 7, x: 0.1, y: -1, z: 7, onComplete: () => {
+                gsap.to(camera.position, { duration: 7, x: -0.1, repeat: -1, yoyo: true, ease: "power1.inOut" })
             }
         })
 

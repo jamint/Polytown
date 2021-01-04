@@ -102,7 +102,7 @@ const Model = ({
     return <primitive object={gltf.scene} receiveShadow position={position} />
 }
 
-export default function Tester03() {
+export default function KaleidoscopeGoldenShapes() {
     return (
         <div className="three-anim">
             <Canvas
@@ -121,8 +121,8 @@ export default function Tester03() {
                 <Lights color={"#1daddd"} />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />
-                    <Model path={'/models/tester-04.glb'} />
-                    <Floor path={'/models/tester-04-bg.glb'} />
+                    <Model path={'/models/kaleidoscope-golden-shapes.glb'} />
+                    <Floor path={'/models/kaleidoscope-golden-shapes-bg.glb'} />
                 </Suspense>
                 <OrbitControls
                     enableZoom={false}

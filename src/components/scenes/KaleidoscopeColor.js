@@ -125,8 +125,8 @@ export default function KaleidoscopeColor() {
                 <Lights />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />
-                    <Model path={'/models/tester-01.glb'} />
-                    <Floor path={'/models/tester-01-bg.glb'} />
+                    <Model path={'/models/kaleidoscope-color.glb'} />
+                    <Floor path={'/models/kaleidoscope-color-bg.glb'} />
                 </Suspense>
                 <OrbitControls
                     enableZoom={false}

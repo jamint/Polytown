@@ -7,7 +7,10 @@ import { Canvas, useLoader, useThree, useFrame } from 'react-three-fiber'
 import * as THREE from 'three'
 import EnvironmentLighting from '../lights/EnvironmentLighting'
 import Lights from '../lights/AnimatedPlatformLights'
+// import Lights from '../lights/LightSetup03'
+// import Lights from '../lights/ColoredLights'
 import gsap from 'gsap'
+
 
 let models = [], mixers = [], actions = [], camera
 
@@ -28,14 +31,14 @@ const Model = ({
     const gltf = useLoader(GLTFLoader, path)
     const world = useThree(),
         worldScene = world.scene
-    const numCopies = 5
+    const numCopies = 1
     const rot = Math.PI * 2 / numCopies
 
     useEffect(() => {
         camera = world.camera
-        gsap.fromTo(camera.position, { x: -2, y: 0, z: 25 }, {
-            duration: 7, x: 4, y: -1, z: 15, ease: "power1.out", onComplete: () => {
-                gsap.to(camera.position, { duration: 7, x: -4, repeat: -1, yoyo: true, ease: "power1.inOut" })
+        gsap.fromTo(camera.position, { x: 0, y: -1, z: 10 }, {
+            duration: 7, x: 0.1, y: -1, z: 7, onComplete: () => {
+                gsap.to(camera.position, { duration: 7, x: -0.1, repeat: -1, yoyo: true, ease: "power1.inOut" })
             }
         })
 
@@ -52,7 +55,8 @@ const Model = ({
         }))
 
         for (let i = 0; i < numCopies; i++) {
-            let newModel = model.clone();
+            // let newModel = model.clone();
+            let newModel = SkeletonUtils.clone(model)
             newModel.rotation.z = rot * i
             models.push(newModel);
         }
@@ -63,8 +67,8 @@ const Model = ({
         })
 
         let modified = {
-            loop: THREE.LoopOnce,
-            clampWhenFinished: true,
+            // loop: THREE.LoopOnce,
+            // clampWhenFinished: true,
             // timeScale: .3
         }
         mixers.map(mixer => {
@@ -78,14 +82,11 @@ const Model = ({
             }
         })
         actions.map((act, i) => {
-            setTimeout(() => {
-                actions[i].play()
-            }, 300 + 20 * i);
+            actions[i].play()
         })
+
         return () => {
             models = []
-            mixers = []
-            actions = []
         };
     }, [])
 
@@ -105,7 +106,7 @@ const Model = ({
     return <primitive object={gltf.scene} receiveShadow position={position} />
 }
 
-export default function KaleidoscopeChocolate() {
+export default function Emoji() {
     return (
         <div className="three-anim">
             <Canvas
@@ -114,18 +115,18 @@ export default function KaleidoscopeChocolate() {
                 concurrent
                 camera={{
                     fov: 40,
-                    position: [0, -1, 15],
+                    // position: [0, -1, 15],
                 }}
                 onCreated={({ gl, scene }) => {
                     gl.toneMapping = THREE.ACESFilmicToneMapping
                     gl.outputEncoding = THREE.sRGBEncoding
                 }} >
-                <fog attach='fog' args={["black", 0, 100]} />
-                <Lights />
+                <fog attach='fog' args={["#704C6B", 0, 40]} />
+                <Lights intensity={0.2} color={"#704C6B"} />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />
-                    <Model path={'/models/kaleidoscope-chocolate.glb'} />
-                    <Floor path={'/models/kaleidoscope-chocolate-bg.glb'} />
+                    <Model path={'/models/emoji.glb'} />
+                    {/* <Floor path={'/models/tester-01-bg.glb'} /> */}
                 </Suspense>
                 <OrbitControls
                     enableZoom={false}

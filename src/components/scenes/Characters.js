@@ -1,5 +1,5 @@
 
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { Canvas, useLoader, useThree } from 'react-three-fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
@@ -7,6 +7,7 @@ import * as THREE from 'three'
 import EnvironmentLighting from '../lights/EnvironmentLighting'
 import Lights from '../lights/AnimatedPlatformLights'
 // import Lights from '../lights/LightTest1'
+import gsap from 'gsap'
 
 const Model = ({
     path,
@@ -14,6 +15,13 @@ const Model = ({
 }) => {
     const { camera } = useThree()
     let { scene } = useLoader(GLTFLoader, path)
+    useEffect(() => {
+        gsap.fromTo(camera.position, { x: -2, y: 3, z: 15 }, {
+            duration: 5, x: 2, y: 3, z: 12, ease: "power1.out", onComplete: () => {
+                gsap.to(camera.position, { duration: 7, x: -4, repeat: -1, yoyo: true, ease: "power1.inOut" })
+            }
+        })
+    })
     scene.traverse((s => {
         if (s.isMesh) {
             s.castShadow = true

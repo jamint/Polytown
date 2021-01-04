@@ -121,6 +121,7 @@ export default function KaleidoscopeColor() {
                     gl.toneMapping = THREE.ACESFilmicToneMapping
                     gl.outputEncoding = THREE.sRGBEncoding
                 }} >
+                <fog attach='fog' args={["#fff", 0, 90]} />
                 <Lights />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />

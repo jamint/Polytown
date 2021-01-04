@@ -9,9 +9,10 @@ import Lights from '../lights/AnimatedPlatformLights'
 import gsap from 'gsap'
 
 let mixer = null
+let balls = null
 
 const playScene = (scene) => {
-    let balls = []
+    balls = []
     const spread = 5
     let ball = null
     for (let i = 0; i < 100; i++) {
@@ -51,10 +52,19 @@ const Model = ({
 }) => {
     let { scene, animations } = useLoader(GLTFLoader, path)
     let actions = null
+    const { camera } = useThree()
 
     useEffect(() => {
+
         mixer = new THREE.AnimationMixer(scene);
         actions = {}
+
+        gsap.fromTo(camera.position, { x: -2, y: 0, z: 25 }, {
+            duration: 7, x: 4, y: -1, z: 15, ease: "power1.out", onComplete: () => {
+                gsap.to(camera.position, { duration: 7, x: -4, repeat: -1, yoyo: true, ease: "power1.inOut" })
+            }
+        })
+
         for (let i = 0; i < animations.length; i++) {
             const clip = animations[i];
             const action = mixer.clipAction(clip);
@@ -70,6 +80,15 @@ const Model = ({
             }
         }))
         playScene(scene)
+        return () => {
+            console.log(balls)
+            balls = []
+            for (let i = 0; i < balls.length; i++) {
+                const ball = balls[i]
+                scene.remove(ball)
+            }
+            console.log(balls)
+        };
     }, [])
     useFrame((state, delta) => {
         mixer.update(delta);

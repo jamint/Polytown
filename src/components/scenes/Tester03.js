@@ -121,7 +121,8 @@ export default function Tester03() {
                     gl.toneMapping = THREE.ACESFilmicToneMapping
                     gl.outputEncoding = THREE.sRGBEncoding
                 }} >
-                <Lights intensity={0.2} color={"#1daddd"} />
+                <fog attach='fog' args={["#704C6B", 0, 40]} />
+                <Lights intensity={0.2} color={"#704C6B"} />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />
                     <Model path={'/models/tester-03.glb'} />

@@ -82,6 +82,11 @@ const Model = ({
                 actions[i].play()
             }, 300 + 20 * i);
         })
+        return () => {
+            models = []
+            mixers = []
+            actions = []
+        };
     }, [])
 
     useFrame((state, delta) => {
@@ -115,6 +120,7 @@ export default function KaleidoscopeChocolate() {
                     gl.toneMapping = THREE.ACESFilmicToneMapping
                     gl.outputEncoding = THREE.sRGBEncoding
                 }} >
+                <fog attach='fog' args={["black", 0, 100]} />
                 <Lights />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />

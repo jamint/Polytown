@@ -5,6 +5,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { OrbitControls } from 'drei'
 import * as THREE from 'three'
 import EnvironmentLighting from '../lights/EnvironmentLighting'
+import gsap from 'gsap'
 import Lights from '../lights/AnimatedPlatformLights'
 // import Lights from '../lights/LightTest1'
 
@@ -20,6 +21,11 @@ const Model = ({
 
     useEffect(() => {
         mixer = new THREE.AnimationMixer(scene);
+        gsap.fromTo(camera.position, { x: 2, y: 3, z: 14 }, {
+            duration: 5, x: 2, y: 3, z: 12, ease: "power1.out", onComplete: () => {
+                gsap.to(camera.position, { duration: 7, x: 3, repeat: -1, yoyo: true, ease: "power1.inOut" })
+            }
+        })
         actions = {}
         for (let i = 0; i < animations.length; i++) {
             const clip = animations[i];
@@ -58,6 +64,7 @@ export default function AnimationTestScene() {
                     gl.toneMapping = THREE.ACESFilmicToneMapping
                     gl.outputEncoding = THREE.sRGBEncoding
                 }} >
+                <fog attach='fog' args={["black", 0, 45]} />
                 <Lights />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />

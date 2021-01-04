@@ -36,9 +36,9 @@ const Model = ({
 
     useEffect(() => {
         camera = world.camera
-        gsap.fromTo(camera.position, { x: 0, y: -1, z: 10 }, {
-            duration: 7, x: 0.1, y: -1, z: 7, onComplete: () => {
-                gsap.to(camera.position, { duration: 7, x: -0.1, repeat: -1, yoyo: true, ease: "power1.inOut" })
+        gsap.fromTo(camera.position, { x: 0, y: 2, z: 10 }, {
+            duration: 7, x: 0, y: 2, z: 10, onComplete: () => {
+                // gsap.to(camera.position, { duration: 7, x: -0.1, repeat: -1, yoyo: true, ease: "power1.inOut" })
             }
         })
 
@@ -106,7 +106,7 @@ const Model = ({
     return <primitive object={gltf.scene} receiveShadow position={position} />
 }
 
-export default function Emoji() {
+export default function Tester() {
     return (
         <div className="three-anim">
             <Canvas
@@ -125,7 +125,7 @@ export default function Emoji() {
                 <Lights intensity={0.2} color={"#704C6B"} />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />
-                    <Model path={'/models/emoji.glb'} />
+                    <Model path={'/models/tester.glb'} />
                     {/* <Floor path={'/models/tester-01-bg.glb'} /> */}
                 </Suspense>
                 <OrbitControls

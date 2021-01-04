@@ -10,12 +10,15 @@ import KaleidoscopeColor from './scenes/KaleidoscopeColor'
 import KaleidoscopeChocolate from './scenes/KaleidoscopeChocolate'
 import KaleidoscopeGoldenShapes from './scenes/KaleidoscopeGoldenShapes'
 import Emoji from './scenes/Emoji'
+import Tester from './scenes/Tester'
 
 function Main() {
     return (
         <main>
             <Switch>
                 <Route exact path='/' component={KaleidoscopeGoldenShapes} />
+
+                <Route path='/tester' component={Tester} />
                 <Route exact path='/kaleidoscope-golden-shapes' component={KaleidoscopeGoldenShapes} />
                 <Route exact path='/emoji' component={Emoji} />
                 <Route path='/kaleidoscope-color' component={KaleidoscopeColor} />

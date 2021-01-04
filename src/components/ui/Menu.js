@@ -38,6 +38,7 @@ export default function Menu() {
                     <NavLink activeClassName="active" to="/balls"><li>Balls</li></NavLink>
                     <NavLink activeClassName="active" to="/ball-loop"><li>Ball Loop</li></NavLink>
                     <NavLink activeClassName="active" to="/characters"><li>Characters</li></NavLink>
+                    {/* <NavLink activeClassName="active" to="/tester"><li>Tester</li></NavLink> */}
 
                 </ul>
             </div>

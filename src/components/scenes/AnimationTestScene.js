@@ -81,7 +81,7 @@ export default function AnimationTestScene() {
                     {/* <Model path={'/models/RobotExpressive.glb'} /> */}
                 </Suspense>
                 <OrbitControls
-                    enableZoom={true}
+                    enableZoom={false}
                     minPolarAngle={1}
                     maxPolarAngle={1.5}
                     maxAzimuthAngle={0.5}

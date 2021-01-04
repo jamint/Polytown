@@ -1,7 +1,8 @@
-const AnimatedPlatformLights = () => {
-    const intensity = 0.3
+const AnimatedPlatformLights = ({ intensity = 0.3 }) => {
+    // const intensity = 0.3
     return (
         <>
+            {/* <fog attach='fog' args={["#fff", 0, 90]} /> */}
             <ambientLight intensity={intensity} />
             <spotLight
                 intensity={intensity}

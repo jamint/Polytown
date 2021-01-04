@@ -32,6 +32,7 @@ export default function Menu() {
                 </div>
                 <ul>
                     <NavLink activeClassName="active" exact to="/"><li>Kaleidoscope Black and Gold</li></NavLink>
+                    <NavLink activeClassName="active" to="/tester-03"><li>Emoji</li></NavLink>
                     <NavLink activeClassName="active" to="/kaleidoscope-color"><li>Kaleidoscope Color</li></NavLink>
                     <NavLink activeClassName="active" to="/kaleidoscope-chocolate"><li>Kaleidoscope Chocolate</li></NavLink>
                     <NavLink activeClassName="active" to="/balls"><li>Balls</li></NavLink>

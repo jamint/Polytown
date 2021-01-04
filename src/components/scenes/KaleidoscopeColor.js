@@ -83,6 +83,11 @@ const Model = ({
             }, 300);
             // }, 300 + 3 * iZ);
         })
+        return () => {
+            models = []
+            mixers = []
+            actions = []
+        };
     }, [])
 
     useFrame((state, delta) => {

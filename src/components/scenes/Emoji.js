@@ -125,7 +125,7 @@ export default function Emoji() {
                 <Lights intensity={0.2} color={"#704C6B"} />
                 <Suspense fallback={null}>
                     <EnvironmentLighting />
-                    <Model path={'/models/emoji.glb'} />
+                    <Model path={'/models/emoji-02.glb'} />
                     {/* <Floor path={'/models/tester-01-bg.glb'} /> */}
                 </Suspense>
                 <OrbitControls
